@@ -1,0 +1,1 @@
+This is a simple node app for uploading a Jpg image in the browser. The user can select a jpg image from the local hard drive and upload it. Make sure to change the path name of the temporary folder from where the file is read in myRequestHandler.js 
