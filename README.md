@@ -1,4 +1,1 @@
-nodeCode
-========
-
-A repository for purely node.js codes.
+#### Repo for my practice codes and programs and also sample codes from internet.

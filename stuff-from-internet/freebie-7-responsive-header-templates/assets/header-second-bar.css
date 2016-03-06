@@ -1,0 +1,181 @@
+.header-two-bars{
+	font:13px Arial, Helvetica, sans-serif;
+}
+
+.header-two-bars .header-limiter{
+	max-width: 1200px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+.header-two-bars h1{
+	float: left;
+	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	margin: 0;
+}
+
+.header-two-bars h1 span {
+	color: #bc40df;
+}
+
+/* The first bar */
+
+.header-two-bars .header-first-bar{
+	background-color:#292c2f;
+	box-shadow:0 1px 1px #ccc;
+	padding: 20px 40px;
+	height: 80px;
+	color: #ffffff;
+	box-sizing: border-box;
+}
+
+.header-two-bars .header-first-bar a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.header-two-bars .header-first-bar nav {
+	font:14px Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	float: left;
+	margin: 0 0 0 60px;
+	padding: 0;
+}
+
+.header-two-bars .header-first-bar nav a{
+	display: inline-block;
+	padding: 0 5px;
+	opacity: 0.9;
+	text-decoration:none;
+	line-height: 1;
+}
+
+.header-two-bars .header-first-bar nav a:hover {
+	opacity: 1;
+}
+
+.header-two-bars .header-first-bar nav a.selected {
+	border-radius: 2px;
+	background-color: #2B5773;
+	padding: 8px 12px;
+}
+
+.header-two-bars .header-first-bar a.logout-button {
+	font-size: 13px;
+	font-weight: bold;
+	float: right;
+	border-radius: 3px;
+	background-color: rgba(58, 60, 62, 0);
+	height: 40px;
+	padding: 0 20px;
+	border: 1px solid #5E6367;
+	line-height: 40px;
+	box-sizing: border-box;
+}
+
+
+/* Second Bar */
+
+.header-two-bars .header-second-bar {
+	background-color: #ffffff;
+	box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.05);
+	padding: 20px 40px;
+}
+
+.header-two-bars .header-second-bar h2 {
+	line-height: 20px;
+	margin: 0;
+	float: left;
+}
+
+.header-two-bars .header-second-bar h2 a {
+	font-size: 16px;
+	color: #4e5359;
+	text-decoration: none;
+}
+
+.header-two-bars .header-second-bar nav {
+	text-align: right;
+	line-height: 20px;
+	font-size: 16px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.header-two-bars .header-second-bar nav a {
+	display: inline-block;
+	color: #4e5359;
+	text-decoration: none;
+}
+
+.header-two-bars .header-second-bar nav i.fa {
+	color: #A9B7BF;
+	margin: 0 4px 0 15px;
+}
+
+
+/*	Making the header responsive. Remove these styles, if
+	you don't need the header to work on mobile devices. */
+
+@media all and (max-width: 800px) {
+
+	.header-two-bars .header-second-bar nav{
+		font-size:14px;
+	}
+
+}
+
+@media all and (max-width: 600px) {
+
+	.header-two-bars .header-first-bar{
+		padding:20px 0;
+	}
+
+	.header-two-bars .header-first-bar h1 {
+		float: none;
+		margin: -8px 0 2px;
+		text-align: center;
+		font-size: 24px;
+		line-height: 1;
+	}
+
+	.header-two-bars .header-first-bar nav {
+		margin: 0;
+		float: none;
+		font-size:13px;
+	}
+
+	.header-two-bars .header-first-bar nav a.selected {
+		padding: 5px 8px;
+	}
+
+	.header-two-bars .header-first-bar .logout-button {
+		display: none;
+	}
+
+	.header-two-bars .header-second-bar{
+		padding: 20px 0;
+	}
+
+	.header-two-bars .header-second-bar h2{
+		float:none;
+		margin: 0 0 12px;
+	}
+
+	.header-two-bars .header-second-bar nav{
+		text-align: center;
+	}
+
+	.header-two-bars .header-second-bar nav a{
+		display: block;
+		padding: 8px;
+	}
+
+	.header-two-bars .header-second-bar nav i.fa{
+		margin-left:0;
+	}
+}

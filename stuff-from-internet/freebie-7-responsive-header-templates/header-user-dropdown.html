@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>User Dropdown Header</title>
+
+	<link rel="stylesheet" href="assets/demo.css">
+	<link rel="stylesheet" href="assets/header-user-dropdown.css">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+
+<header class="header-user-dropdown">
+
+	<div class="header-limiter">
+		<h1><a href="#">Company<span>logo</span></a></h1>
+
+		<nav>
+			<a href="#">Overview</a>
+			<a href="#">Surveys</a>
+			<a href="#">Reports</a>
+			<a href="#">Roles <span class="header-new-feature">new</span></a>
+		</nav>
+
+
+		<div class="header-user-menu">
+			<img src="assets/2.jpg" alt="User Image"/>
+
+			<ul>
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Payments</a></li>
+				<li><a href="#" class="highlight">Logout</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+</header>
+
+<!-- The content of your page would go here. -->
+
+
+<div class="menu">
+
+	<img src="assets/demo-arrow.png" alt="arrow" height="120">
+
+	<h1>Freebie: 7 Responsive Header Templates</h1>
+	<h2><a href="http://tutorialzine.com/2015/02/freebie-7-responsive-header-templates/">Download</a></h2>
+
+	<ul>
+		<li><a href="index.html">Basic</a></li>
+		<li><a href="header-basic-light.html">Basic Light</a></li>
+		<li><a href="header-fixed.html">Fixed</a></li>
+		<li><a href="header-login-signup.html">Login/Sign up</a></li>
+		<li><a href="header-search.html">Search</a></li>
+		<li><a href="header-second-bar.html">Second Bar</a></li>
+		<li><a href="header-user-dropdown.html" class="active">User Dropdown</a></li>
+	</ul>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+	$(document).ready(function(){
+
+		var userMenu = $('.header-user-dropdown .header-user-menu');
+
+		userMenu.on('touchend', function(e){
+
+			userMenu.addClass('show');
+
+			e.preventDefault();
+			e.stopPropagation();
+
+		});
+
+		// This code makes the user dropdown work on mobile devices
+
+		$(document).on('touchend', function(e){
+
+			// If the page is touched anywhere outside the user menu, close it
+			userMenu.removeClass('show');
+
+		});
+
+	});
+
+</script>
+
+
+<!-- Demo ads. Please ignore and remove. -->
+<script src="http://cdn.tutorialzine.com/misc/enhance/v3.js" async></script>
+
+</body>
+
+</html>
