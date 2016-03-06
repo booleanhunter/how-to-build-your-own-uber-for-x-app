@@ -1,0 +1,29 @@
+CGI programs
+cd var/www/cgi-bin (ENTER)
+cgi-bin# vim filename.cgi (ENTER)
+#type ur prog in d editor
+esc:wq
+#perl filename.cgi (ENTER)
+#chmod +x filename.cgi
+
+BROWSER:
+(http://localhost/cgi-bin/filename.cgi (if cgi prog is not embedded)
+else
+http://localhost/filename.html
+
+PHP PROGRAMS
+cd /var/www/html
+ls
+(in the list of files,see if there is any php folder. then click on that n do vim filename.php)
+else
+mkdir php
+chmod +rx php
+cd php
+vim filename.php (write the program in the editor)
+:wq
+#php filename.php
+chmod +rx filename.php
+
+IN THE BROWSER:
+http://localhost/php/filename.php
+

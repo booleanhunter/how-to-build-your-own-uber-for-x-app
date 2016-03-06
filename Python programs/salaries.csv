@@ -1,0 +1,25 @@
+City,Job,Salary
+Delhi,Doctors,500
+Delhi,Lawyers,400
+Delhi,Plumbers,100
+London,Doctors,800
+London,Lawyers,700
+London,Plumbers,300
+Tokyo,Doctors,900
+Tokyo,Lawyers,800
+Tokyo,Plumbers,400
+Lawyers,Doctors,300
+Lawyers,Lawyers,400
+Lawyers,Plumbers,500
+Hong Kong,Doctors,1800
+Hong Kong,Lawyers,1100
+Hong Kong,Plumbers,1000
+Moscow,Doctors,300
+Moscow,Lawyers,200
+Moscow,Plumbers,100
+Berlin,Doctors,800
+Berlin,Plumbers,900
+Paris,Doctors,900
+Paris,Lawyers,800
+Paris,Plumbers,500
+Paris,Dog catchers,400

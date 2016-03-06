@@ -1,0 +1,99 @@
+div
+{
+	position:absolute;
+	width:80px;
+	height:80px;
+}
+.board
+{
+	border-style:solid;
+	border-width:thin;
+	top:80px;
+	left:80px;
+	width:640px;
+	height:640px;
+}	
+.one, .three, .five, .seven, .ten,  .twelve, .fourteen, .sixteen, .seventeen, .nineteen, .twoone, .twothree, .twosix, .twoeight,
+.thirty, .threetwo, .threethree,  .threefive, .threeseven,  .threenine, .fourtwo, .fourfour, .foursix, .foureight,
+ .fournine,.fiveone, .fivethree, .fivefive, .fiveeight,.sixty, .sixtwo, .sixfour
+{
+	background-color:black;
+}
+
+.one{top:80px;left:80px;}
+.two{top:80px;left:160px;}
+.three{top:80px;left:240px;}
+.four{top:80px;left:320px;}
+.five{top:80px;left:400px;}
+.six{top:80px;left:480px;}
+.seven{top:80px;left:560px;}
+.eight{top:80px;left:640px;}
+.nine{top:160px;left:80px;}
+.ten{top:160px;left:160px;}
+.eleven{top:160px;left:240px;}
+.twelve{top:160px;left:320px;}
+.thirteen{top:160px;left:400px;}
+.fourteen{top:160px;left:480px;}
+.fifteen{top:160px;left:560px;}
+.sixteen{top:160px;left:640px;}
+.seventeen{top:240px;left:80px;}
+.eighteen{top:240px;left:160px;}
+.nineteen{top:240px;left:240px;}
+.twenty{top:240px;left:320px;}
+.twoone{top:240px;left:400px;}
+.twotwo{top:240px;left:480px;}
+.twothree{top:240px;left:560px;}
+.twofour{top:240px;left:640px;}
+.twofive{top:320px;left:80px;}
+.twosix{top:320px;left:160px;}
+.twoseven{top:320px;left:240px;}
+.twoeight{top:320px;left:320px;}
+.twonine{top:320px;left:400px;}
+.thirty{top:320px;left:480px;}
+.threeone{top:320px;left:560px;}
+.threetwo{top:320px;left:640px;}
+.threethree{top:400px;left:80px;}
+.threefour{top:400px;left:160px;}
+.threefive{top:400px;left:240px;}
+.threesix{top:400px;left:320px;}
+.threeseven{top:400px;left:400px;}
+.threeeight{top:400px;left:480px;}
+.threenine{top:400px;left:560px;}
+.forty{top:400px;left:640px;}
+.fourone{top:480px;left:80px;}
+.fourtwo{top:480px;left:160px;}
+.fourthree{top:480px;left:240px;}
+.fourfour{top:480px;left:320px;}
+.fourfive{top:480px;left:400px;}
+.foursix{top:480px;left:480px;}
+.fourseven{top:480px;left:560px;}
+.foureight{top:480px;left:640px;}
+.fournine{top:560px;left:80px;}
+.fifty{top:560px;left:160px;}
+.fiveone{top:560px;left:240px;}
+.fivetwo{top:560px;left:320px;}
+.fivethree{top:560px;left:400px;}
+.fivefour{top:560px;left:480px;}
+.fivefive{top:560px;left:560px;}
+.fivesix{top:560px;left:640px;}
+.fiveseven{top:640px;left:80px;}
+.fiveeight{top:640px;left:160px;}
+.fivenine{top:640px;left:240px;}
+.sixty{top:640px;left:320px;}
+.sixone{top:640px;left:400px;}
+.sixtwo{top:640px;left:480px;}
+.sixthree{top:640px;left:560px;}
+.sixfour{top:640px;left:640px;}
+
+.dump{top:500px;left:1000px;}
+
+img
+{
+	cursor: pointer; 
+	cursor: hand;
+	position:absolute;
+	height:70px;
+	width:70px;
+	border-radius:50px;
+	transition:top 3s, left 3s;
+}
