@@ -12,26 +12,19 @@ import (
 	"path"
 )
 
+/**
+* @Purpose : Struct used throughout this program for DB operations. Contains a field called session, which is of type *mgo.Session.
+           Refer function Dial in /gopkg.in/mgo.v2/session.go
+*/
 type MongoClient struct {
 	session *mgo.Session
 }
 
-type UserData struct {
-	ID       bson.ObjectId `bson:"_id,omitempty"`
-	Username string
-	Password string
-}
-
-type TodoData struct {
-	ID       bson.ObjectId `bson:"_id,omitempty"`
-	Username string
-	Content  string
-	Date     string
-}
-
-var mongoClient *MongoClient
-var mongoError error
-
+/**
+* @Params : (IP address of the cluster - string, Keyspace of the DB - string )
+* @Return type: *MongoClient
+* @Purpose : Used to initialize the struct fields of MongoClient.
+ */
 func NewMongoDbOps(clusterIp string, keyspace string) (*MongoClient, error) {
 	mongoClient := &MongoClient{}
 
@@ -51,22 +44,59 @@ func (mongoClient *MongoClient) CloseConnection() {
 	mongoClient.session.Close()
 }
 
+/**
+* @Purpose : Struct to store userData in mongoDB
+ */
+type UserData struct {
+	ID       bson.ObjectId `bson:"_id,omitempty"`
+	Username string
+	Password string
+}
+
+/**
+* @Purpose : Struct to store todoData in mongoDB
+ */
+type TodoData struct {
+	ID       bson.ObjectId `bson:"_id,omitempty"`
+	Username string
+	Content  string
+	Date     string
+}
+
+//Creating an instance of the struct
+var mongoClient *MongoClient
+var mongoError error
+
 func main() {
 
+	//This implements FileSystem using the native file system restricted to a specific directory tree, in our case a directory called dist. Go will serve static assets starting from this directory
 	fs := http.FileServer(http.Dir("dist"))
+
+	//Handle requests from /dist, first by stripping the request url of '/dist', since go will look inside the '/dist' directory by default
 	http.Handle("/dist/", http.StripPrefix("/dist/", fs))
 
+	//Handle requests to /
 	http.HandleFunc("/", serveTemplate)
 
+	//Handle requesst to retrieve all todos
 	http.HandleFunc("/todos/get_all", retrieveTodos)
 
+	//Handle request to save todo
 	http.HandleFunc("/todos/save", saveTodos)
 
 	log.Println("Listening...")
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3000", nil) //Starting the web server at port 3000
 }
 
+/**
+* @Params : (http.ResponseWriter, *http.Request)
+* @Return type: nil
+* @Purpose : To return a page back to the client.
+             An http.ResponseWriter value assembles the HTTP server's response; by writing to it, we send data to the HTTP client.
+             An http.Request is a data structure that represents the client HTTP request. r.URL.Path is the path component of the request URL.
+*/
 func serveTemplate(w http.ResponseWriter, r *http.Request) {
+
 	indexTemplate := path.Join("views", "index.html")
 	exampleTemplate := path.Join("views", r.URL.Path)
 
@@ -100,6 +130,11 @@ func serveTemplate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+/**
+* @Params : (http.ResponseWriter, *http.Request)
+* @Return type: nil
+* @Purpose : To accept todo data from request body and save it to MongoDB.
+ */
 func saveTodos(w http.ResponseWriter, r *http.Request) {
 
 	requestBody := struct {
@@ -107,22 +142,26 @@ func saveTodos(w http.ResponseWriter, r *http.Request) {
 		Date    string `json:date`
 	}{}
 
+	//Parse the http request body and map it to the struct requestBody
 	if err := json.NewDecoder(r.Body).Decode(&requestBody); err != nil {
 		panic(err.Error())
 	}
 
+	//Prints the todo information from the http request body
 	fmt.Printf("%+v", requestBody)
 
+	//Initialize a new mongodb connection instance.
 	if mongoClient, mongoError = NewMongoDbOps("127.0.0.1", "test"); mongoError != nil {
 		panic(mongoError)
 	}
 
+	//A defer statement defers the execution of a function until the surrounding function returns.
 	defer mongoClient.CloseConnection()
 
-	// Collection Todos
+	// Collection 'todoData'
 	c := mongoClient.session.DB("test").C("todoData")
 
-	// Insert Data
+	// Insert Data into the collection
 	err := c.Insert(&TodoData{
 		Username: "testuser",
 		Content:  requestBody.Content,
@@ -140,14 +179,22 @@ func saveTodos(w http.ResponseWriter, r *http.Request) {
 		Message: "Saved",
 	}
 
+	//Converts responseBody into bytes
 	responseBodyInBytes, err := json.Marshal(responseBody)
 	if err != nil {
 		panic(err.Error() + " Error in marshalling response")
 	}
+
+	//Sends the response back to the client
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Write(responseBodyInBytes)
 }
 
+/**
+* @Params : (http.ResponseWriter, *http.Request)
+* @Return type: nil
+* @Purpose : To retrieve todos and send back to client
+ */
 func retrieveTodos(w http.ResponseWriter, r *http.Request) {
 
 	if mongoClient, mongoError = NewMongoDbOps("127.0.0.1", "test"); mongoError != nil {
@@ -156,11 +203,13 @@ func retrieveTodos(w http.ResponseWriter, r *http.Request) {
 
 	defer mongoClient.CloseConnection()
 
-	// Collection Todos
+	// Collection todoData
 	c := mongoClient.session.DB("test").C("todoData")
 
-	// Insert Data
+	//results array of type TodoData to store results of Mongo Query
 	var results []TodoData
+
+	// Mongo query to find all todos with username 'testuser', stores them in results array
 	err := c.Find(bson.M{"username": "testuser"}).Sort("-timestamp").All(&results)
 
 	if err != nil {
