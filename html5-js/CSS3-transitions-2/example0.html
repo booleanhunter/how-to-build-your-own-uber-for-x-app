@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+	<title>Move the ball</title>
 	<link rel="stylesheet" type="text/css" href="example0.css">
 	<script type="text/javascript">
  
@@ -13,14 +14,6 @@
 	function up()
 	{
 		document.getElementById("ball1").className="up";
-		var ball1os=document.getElementById("ball1")
-		var ball2os=document.getElementById("ball2");
-		var two=ball2os.getBoundingClientRect();
-		var one=ball1os.getBoundingClientRect();
-		if(one.top==two.bottom)
-		{
-			ball2os.className="cenleft";
-		}
 	}
 
 	function down()
