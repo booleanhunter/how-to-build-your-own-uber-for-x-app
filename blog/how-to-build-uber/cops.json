@@ -1,0 +1,114 @@
+{
+    "userId" : "01",
+    "displayName" : "Cop 1",
+    "phone" : "01",
+    "email" : "cop01@gmail.com",
+    "earnedRatings" : 21,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "SS Environs, Chellikere, 1st block, Chelekare, Kalyan Nagar, Bengaluru, Karnataka 560043, India",
+        "coordinates" : [
+            77.63997110000003,
+            13.0280047
+        ]
+    }
+}
+{
+    "userId" : "02",
+    "displayName" : "Cop 2",
+    "phone" : "02",
+    "email" : "cop02@gmail.com",
+    "earnedRatings" : 10,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "Artistic Art Forum Pvt.ltd, HAL 2nd Stage, Appareddipalya, Indiranagar, Bengaluru, Karnataka 560038, India",
+        "coordinates" : [
+            77.64115449999997,
+            12.9718915
+        ]
+    }
+
+}
+{
+    "userId" : "03",
+    "displayName" : "Cop 3",
+    "phone" : "03",
+    "email" : "cop03@gmail.com",
+    "earnedRatings" : 15,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "16, D Bhaskaran Rd, Murphy Town, Ulsoor, Bengaluru, Karnataka 560008, India",
+        "coordinates" : [
+            77.62855850000005,
+            12.9817147
+        ]
+    }
+}
+{
+    "userId" : "04",
+    "displayName" : "Cop 4",
+    "phone" : "04",
+    "email" : "cop04@gmail.com",
+    "earnedRatings" : 11,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "77-406, MG Road, Shanthala Nagar, Shivaji Nagar, Bengaluru, Karnataka 560001, India",
+        "coordinates" : [
+            77.60547099999997,
+            12.975614
+        ]
+    }
+}
+{
+    "userId" : "05",
+    "displayName" : "Cop 5",
+    "phone" : "05",
+    "email" : "cop05@gmail.com",
+    "earnedRatings" : 15,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "Swamy Vivekananda Rd, Gowthamapuram, Jogupalya, Bengaluru, Karnataka 560007, India",
+        "coordinates" : [
+            77.62047400000006,
+            12.972814
+        ]
+    }
+}
+{
+    "userId" : "06",
+    "displayName" : "Cop 6",
+    "phone" : "06",
+    "email" : "cop06@gmail.com",
+    "earnedRatings" : 21,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "869, 12th Main Rd, Koramangala 3 Block, Koramangala, Bengaluru, Karnataka 560034, India",
+        "coordinates" : [
+            77.62710779999998,
+            12.9279232
+        ]
+    }
+
+}
+{
+    "userId" : "07",
+    "displayName" : "Cop 7",
+    "phone" : "07",
+    "email" : "cop07@gmail.com",
+    "earnedRatings" : 18,
+    "totalRatings" : 25,
+    "location" : {
+        "type" : "Point",
+        "address" : "7th Cross Rd, Domlur I Stage, Stage 2, Domlur, Bengaluru, Karnataka 560071, India",
+        "coordinates" : [
+            77.63873160000003,
+            12.9609857
+        ]
+    }
+}
