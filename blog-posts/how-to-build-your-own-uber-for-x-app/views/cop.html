@@ -61,7 +61,7 @@
 
                 document.getElementById("copDetails").innerHTML = JSON.stringify(data.copDetails);
 
-                L.mapbox.accessToken = 'pk.eyJ1IjoiYm9vbGVhbmh1bnRlciIsImEiOiJjaXJ0ZWxoZzMwaWltZmttNnFxNDZ6ZzZuIn0.QUr13N3gKNjn0QfEw71-wg';
+                L.mapbox.accessToken = '<INSERT YOUR TOKEN HERE>';
                 //Load the map and set it to a cop's lat-lng
                 map = L.mapbox.map('map', 'mapbox.streets');
                 map.setView([copDetails.location.latitude, copDetails.location.longitude], 15);
