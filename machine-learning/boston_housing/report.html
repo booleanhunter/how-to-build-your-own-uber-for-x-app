@@ -11779,7 +11779,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11851,23 +11851,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">prices</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">]</span>
 
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;MEDV&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">minimum_price</span><span class="p">:</span>
-        <span class="n">minimum_price</span> <span class="o">=</span> <span class="n">i</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">maximum_price</span><span class="p">:</span>
-        <span class="n">maximum_price</span> <span class="o">=</span> <span class="n">i</span>
-        
+<span class="c1"># TODO: Minimum price of the data</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">minimum_price</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">maximum_price</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
@@ -13843,6 +13837,7 @@ kiRJkiRJI+PFKUmSJEmSJI3M220e3aPTLxcfAAAAAElFTkSuQmCC
 <li><strong>max_depth = 6</strong>: The classifier seems to be trained well, but the training and testing curves don't seem to be converging. This seems to be a good fit too, but probably suffers from a slight variance. Adding more training points coould help it improve further.</li>
 <li><strong>max_depth = 10</strong> the training curve has a good score but there's a large gap between the training curve and the tsting curve. This could indicate that the model suffers from a high variance. Adding more training points can help make the model better.</li>
 </ul>
+<p>Since both the curves plateau even when the number of training points cross 350, the model doesn't seem to be getting any better. So adding more points won't make the model significantly better at predicting unseen data.</p>
 
 </div>
 </div>
@@ -14885,6 +14880,7 @@ Predicted selling price for Client 3&#39;s home: $942,666.67
 <p>The average of these three prices is 507657.84, which seems close to the calculated mean of the entire Boston housing data-set $454342.94.</p>
 <p>Client 3 has a house that has more rooms than the other clients, has lesser poverty percentage level and has the least student-teacher ratio than the other houses, so naturally the predicted value of the house is higher than the rest.</p>
 <p>Client 2 on the other hand, has the least number of rooms, has the highest poverty percentage level and has the largest student-teacher ratio among the three clients, hence the predicted value of this house is the least of all.</p>
+<p>Client 1 has a house that has more rooms than Client 2 but lesser than Client 3. The house also seems to be in a better neighborhood and has better student-teacher ratio than that of Client 2, but not as good as that of Client 3. So the predicted value of this house is greater than Client 2's, but lesser than Client 3's.</p>
 
 </div>
 </div>
