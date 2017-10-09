@@ -1,0 +1,123 @@
+1. Add docker to user group first or else it won't run
+
+    sudo usermod -aG docker $(whoami)
+
+2. docker run ubuntu /bin/echo 'Hello world'
+
+   docker run: to run a container
+   ubuntu: image of the ubuntu OS. If the image does not exist, docker pulls the image from the public image repository
+
+   /bin/echo 'Hello world': runs it inside a new container and prints Hello world
+
+
+3. docker run -i -t --rm ubuntu /bin/bash
+
+   -t: assigns a pseudo terminal inside the new container
+   -i: Makes an interactive connection by grabbing the standard input (STDIN)
+   --rm: Automatically removes the container when the process exits. By default, docker containers are not deleted.
+
+docker run --name daemon -d ubuntu /bin/sh -c "while true; do echo hello world; sleep 1; done"
+
+    -name daemon: assigns the name 'daemon' to a new container. IF you don't name it, docker will generate and name it automatically
+    -d: runs the container in the background (daemonize it)
+
+
+4. To list all containers: docker ps -a
+
+5. To see what a specific daemon container is doing right now:
+   docker logs -f daemon
+   Prints the log of the container named 'daemon'
+
+6. To stop a daemon container: docker stop daemon
+
+7. To start a container: docker start <container name>
+
+8. To remove a container: docker rm <container name>
+
+9. To see downloaded images: docker images
+
+10. To get details about a running container: docker inspect <container name>
+
+11. To run a container: $ docker run --name some-app --link some-mongo:mongo -d application-that-uses-mongo
+
+
+12. To build from an image: docker build -t taskomplete .
+
+13. Remove all dangling volumes: docker volume rm `docker volume ls -q -f dangling=true`
+
+14. to copy files:
+
+docker cp foo.txt mycontainer:/foo.txt
+docker cp mycontainer:/foo.txt foo.txt
+
+
+
+----------------------------
+How I ran taskomplete:
+
+1. First, create a DockerFile. Put this in the repo of tasKomplete.
+2. Next, build an image using this DockerFile using: docker build -t taskomplete . 
+(where . indicates that the DockerFile is in the current folder)
+3. Next, we need to run a docker container, with a hosted volume. The syntax is:
+
+docker run -it --name <mention a new container name> -v <folder path that you want in to replicate in the container>:<path inside the container where you want to put the folder in> <image name> /bin/bash
+
+-it will create an interacive terminal and /bin/bash will let us type linux commands using the bash kernel
+
+docker run -t --name taskomplete -v /home/ashwin/Documents/git-repos/tasKomplete:/home/booleanhunter/apps/taskomplete -d taskomplete /bin/bash
+
+ALTERNATIVELY
+
+you can simply run it as a daemon process: docker run --name taskomplete -d taskomplete.
+Syntax is: docker run <mention a new container name> -d <image name>
+
+4. after this, you can connect to the docker container or SSH to it using a root user (useful for installing dependencies and other things)
+
+sudo docker exec -u root -i -t taskomplete /bin/bash
+
+--------------------
+5. Next, do docker run --name mongo -d mongo AND docker run --name redis -d redis on another terminals.
+6. Then get the IP of the mongo and redis containers using docker inspect mongo and docker inspect redis
+7. Then SSH to the taskomplete container using step 4.
+And then run:  DEBUG=taskomplete:*, node app.js -mongoip <insert IP of mongo from previous step> -redisip <insert IP of redis from previous step>
+
+8. Then get the IP of taskomplete container using docker inspect taskomplete.
+9. Finally type the IP along with port number in your host machine's browser.
+
+
+
+Once you do this, you can startr editing files inside your host OS and the changes will be reflected within the container. And also vice-versa, any changes that you make inside the container will reflect on the folder in the host OS as well.
+
+
+
+
+
+
+
+
+
+
+
+----------------------------
+Anaconda commands:
+
+Installing anaonda 2.7 will install python2.7 packages by default. Installing anaconda3.6 will install python 3.6 by default.
+You can use any of the anaconda installer and then later upgrade it to any version of python
+
+1. To create a new vrtual environment with python 3.6 installed
+conda create -n python3.6 python=3.6 anaconda
+ -n stands for a name parameter
+
+2. To list all environments: conda --info envs
+
+3. conda remove --name python3.6 --all : Will remove all environments that begin with name python3.6
+
+4. A really useful feature is sharing environments so others can install all the packages used in your code, with the correct versions. You can save the packages to a YAML file with conda env export > environment.yaml. The first part conda env export writes out all the packages in the environment, including the Python version.
+
+5. source activate python3.6
+ To activate an environment
+
+
+6. To create an environment from an environment file use conda env create -f environment.yaml. This will create a new environment with the same name listed in environment.yaml.
+
+7. conda env remove -n env_name 
