@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Civilian {{ userId }} </title>
+    <link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />
+</head>
+
+<body data-userId="{{ userId }}">
+    <h1> Hello, Civilian {{ userId }} </h1>
+
+    <h4 id="notification"></h4>
+    <button onclick="requestForHelp()">
+        Request for help
+    </button>
+
+    <div id="map" style="width: 600px; height: 400px;">
+        <!-- Load a map here -->
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
+
+    <script type="text/javascript">
+        const socket = io();
+
+        const userId = document.body.getAttribute("data-userId");
+        socket.emit("join", {
+            userId: userId
+        }); // Join a room, roomname is the userId itself!
+
+        // Empty variables to store information. This will get filled later
+        let requestDetails = {};
+        let copDetails = {};
+        let map, marker;
+
+        requestDetails = {
+            civilianId: userId,
+            location: {
+                address: "Indiranagar, Bengaluru, Karnataka 560038, India",
+                latitude: 12.9718915,
+                longitude: 77.64115449999997
+            }
+        }
+
+        function requestForHelp() { // When button is clicked, emit an event
+            socket.emit("request-for-help", requestDetails);
+        }
+
+        // Listen for a 'request-accepted' event
+        socket.on("request-accepted", (eventData) => {
+            copDetails = eventData; // Save cop details
+
+            // Display Cop address
+            document.getElementById("notification").innerHTML =
+                `${copDetails.displayName} is near ${copDetails.location.address} and will be arriving at your location shortly.
+                You can reach them at their mobile ${copDetails.phone}`;
+
+            // Show cop location on the map
+            L.marker([
+                copDetails.location.latitude,
+                copDetails.location.longitude
+            ], {
+                icon: L.icon({
+                    iconUrl: "/images/cop.png",
+                    iconSize: [60, 28]
+                })
+            }).addTo(map);
+        });
+
+        L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
+
+        map = L.mapbox.map("map", "mapbox.streets"); // Load the map and give it a default style
+        map.setView([12.9718915, 77.64115449999997], 15); // Load the map and set it to a given lat-lng
+        marker = L.marker([12.9718915, 77.64115449999997]).addTo(map); // Display a default marker
+
+        // Use MapBox geo-coding API
+        map.addControl(L.mapbox.geocoderControl("mapbox.places", {
+            autocomplete: true,
+        }).on("select", (data) => { // This function runs when a place is selected
+            console.log(data); // data contains the geocding results
+
+            // Extract address and coordinates from the results and save it
+            requestDetails.location = {
+                address: data.feature["place_name"],
+                latitude: data.feature.center[1],
+                longitude: data.feature.center[0]
+            };
+
+            marker.setLatLng([data.feature.center[1], data.feature.center[0]]); // Set the marker to new location
+        }));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Visualize Crime Data</title>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="map" style="width: 800px; height: 500px;"></div>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.1.0/mapbox-gl.js"></script>
+
+<script type="text/javascript">
+    const socket = io();
+
+    // Empty variables to store information. This will get filled later
+    let map, marker;
+    mapboxgl.accessToken = "<MAPBOX_ACCESS_TOKEN>";
+
+    // First send a GET request using Axios and get the cop's details and save it
+    axios.get("/requests/info")
+        .then( (response) => {
+            console.log(response.data);
+
+            map = new mapboxgl.Map({
+                container: "map",
+                style: "mapbox://styles/mapbox/dark-v9",
+                center: [77.64115449999997, 12.9718915],
+                zoom: 10
+            });
+
+            map.on("load", () => {
+
+                // Add a new source from our GeoJSON data and set the 'cluster' option to true.
+                map.addSource("help-requests", {
+                    type: "geojson",
+                    data: response.data
+                });
+
+                // we can specify different color and styling formats by adding different layers
+                map.addLayer({
+                    "id": "help-requests",
+                    "type": "circle",
+                    "source": "help-requests",
+                    "paint": {
+                        // Apply a  different color to different status fields
+                        "circle-color": {
+                            property: "status",
+                            type: "categorical",
+                            stops: [
+                                ["waiting", "rgba(255,0,0,0.5)"], // For waiting, show in red
+                                ["engaged", "rgba(0,255,0,0.5)"] // For engaged, show in green
+                            ]
+                        },
+                        "circle-radius": 20, // Radius of the circle
+                        "circle-blur": 1 // Amount of blur
+                    }
+                });
+            });
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+</script>
+
+</html>
