@@ -1,1 +1,0 @@
-this is a resume made in html5, css3 and impress.js(javascript)

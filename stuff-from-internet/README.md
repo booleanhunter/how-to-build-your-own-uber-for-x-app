@@ -1,1 +1,0 @@
-#### Code samples, snippets and exmaples that I come across the internet are in this folder

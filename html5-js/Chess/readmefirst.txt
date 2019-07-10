@@ -1,1 +1,0 @@
-This is an incomplete project. Used javascript html5 and css3. Open chess.html in firefox(preferably)

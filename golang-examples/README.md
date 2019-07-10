@@ -1,1 +1,0 @@
-#### Trying out writing few sample GoLang programs
