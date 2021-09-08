@@ -1,21 +1,33 @@
+![Project Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+
 ![](https://cdn-images-1.medium.com/max/1000/1*WcHHixgDq7o5lN3biKIu9Q.png)
 # Code for my blog series:
-- [How to build your own Uber-for-X App](https://blog.booleanhunter.com/how-to-build-your-own-uber-for-x-app/)
-- [How to build your own Uber-for-X App - Part 2](https://blog.booleanhunter.com/how-to-build-your-own-uber-for-x-app-part-2/)
+- [How to build your own Uber-for-X App](https://www.ashwinhariharan.tech/blog/how-to-build-your-own-uber-for-x-app/)
+- [How to build your own Uber-for-X App - Part 2](https://www.ashwinhariharan.tech/blog/how-to-build-your-own-uber-for-x-app-part-2/)
 
-### How to install:
-- Clone or fork this repo
-- Install NodeJS and MongoDB
-- Run `npm install`
+
+## Tech Stack
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![Node.JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white) ![Express.JS](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge) ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) 
+
+## How to install:
+- Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://docs.mongodb.com/)
+- Fork this project and clone it in your machine
+- `cd` to your project root and run `npm install`
 - run `mongoimport --db uberForX --collection cops --drop --file ./db/cops.json` to import sample cop information in MongoDB
 - run `mongoimport --db uberForX --collection requests --drop --file ./db/crime-data.json` to import sample crime information in MongoDB
 
-### How to run:
-- run `node app.js`
+## How to run:
+- Run `node app.js` in your project root folder
 - Open a demo civilian page by going to http://localhost:8000/civilian.html?userId=YOURNAME
 - Open 3 or more cop pages from the imported cop profiles on separate tabs - [01](http://localhost:8000/cop.html?userId=01), [02](http://localhost:8000/cop.html?userId=02), [03](http://localhost:8000/cop.html?userId=03), [04](http://localhost:8000/cop.html?userId=04), [05](http://localhost:8000/cop.html?userId=05), [06](http://localhost:8000/cop.html?userId=06), [07](http://localhost:8000/cop.html?userId=07)
 
-### Did this project help you? I'd love your support.
+
+-----
+
+![Made with love](http://ForTheBadge.com/images/badges/built-with-love.svg) 
+
+## Did this project help you? I'd love your support 🙏
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I2131HO)
 
