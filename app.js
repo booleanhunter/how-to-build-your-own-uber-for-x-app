@@ -25,7 +25,8 @@ app.engine('html', consolidate.handlebars); // Use handlebars to parse templates
 
 // connect to Database
 const db = 'mongodb://localhost:27017/uberForX';
-mongoose.connect(db).then(value => {
+
+mongoose.connect(db,{ useNewUrlParser: true,useUnifiedTopology: true, useCreateIndex: true }).then(value => {
     // Successful connection
     console.log(value.models);
 }).catch(error => {
