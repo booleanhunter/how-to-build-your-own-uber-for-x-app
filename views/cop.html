@@ -56,10 +56,10 @@
                     Address: ${copDetails.location.address}
                     `;
 
-                    L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
+                L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
                 // Load the map and set it to a cop's lat-lng
                 map = L.mapbox.map("map")
-                    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));;
+                    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
                 map.setView([copDetails.location.latitude, copDetails.location.longitude], 15);
 
                 // Display a default marker
