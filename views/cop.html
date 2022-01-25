@@ -43,7 +43,7 @@
 
         // First send a GET request using Axios and get the cop's details and save it
         axios.get(`/cops/info?userId=${userId}`)
-            .then( (response) => {
+            .then((response) => {
                 copDetails = response.data.copDetails;
                 copDetails.location = {
                     address: copDetails.location.address,
@@ -56,9 +56,10 @@
                     Address: ${copDetails.location.address}
                     `;
 
-                L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
+                    L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
                 // Load the map and set it to a cop's lat-lng
-                map = L.mapbox.map("map", "mapbox.streets");
+                map = L.mapbox.map("map")
+                    .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));;
                 map.setView([copDetails.location.latitude, copDetails.location.longitude], 15);
 
                 // Display a default marker
@@ -85,7 +86,7 @@
 
             // display civilian info
             document.getElementById("notification").innerHTML =
-            `Civilian ${requestDetails.civilianId} is being attacked by a wildling and needs help!
+                `Civilian ${requestDetails.civilianId} is being attacked by a wildling and needs help!
             They're at ${requestDetails.location.address}`;
 
             // Show civilian location on the map

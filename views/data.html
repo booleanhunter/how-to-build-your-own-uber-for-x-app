@@ -31,7 +31,6 @@
 
             map = new mapboxgl.Map({
                 container: "map",
-                style: "mapbox://styles/mapbox/dark-v9",
                 center: [77.64115449999997, 12.9718915],
                 zoom: 10
             });
@@ -62,7 +61,9 @@
                         "circle-radius": 20, // Radius of the circle
                         "circle-blur": 1 // Amount of blur
                     }
-                });
+                },
+                L.mapbox.styleLayer('mapbox://styles/mapbox/dark-v9')
+                );
             });
         })
         .catch(function(error){

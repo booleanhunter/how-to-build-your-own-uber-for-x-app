@@ -26,6 +26,8 @@
     <script src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>
 
     <script type="text/javascript">
+
+
         const socket = io();
 
         const userId = document.body.getAttribute("data-userId");
@@ -74,7 +76,8 @@
 
         L.mapbox.accessToken = "<MAPBOX_ACCESS_TOKEN>";
 
-        map = L.mapbox.map("map", "mapbox.streets"); // Load the map and give it a default style
+        map = L.mapbox.map("map")
+                        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11')); // Load the map and give it a default style
         map.setView([12.9718915, 77.64115449999997], 15); // Load the map and set it to a given lat-lng
         marker = L.marker([12.9718915, 77.64115449999997]).addTo(map); // Display a default marker
 
