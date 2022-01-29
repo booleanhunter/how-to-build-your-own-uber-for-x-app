@@ -80,7 +80,7 @@
                         .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11')); // Load the map and give it a default style
         map.setView([12.9718915, 77.64115449999997], 15); // Load the map and set it to a given lat-lng
         marker = L.marker([12.9718915, 77.64115449999997]).addTo(map); // Display a default marker
-
+        
         // Use MapBox geo-coding API
         map.addControl(L.mapbox.geocoderControl("mapbox.places", {
             autocomplete: true,

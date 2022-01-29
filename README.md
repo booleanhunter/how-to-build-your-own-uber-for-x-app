@@ -34,3 +34,10 @@
 <a href="https://www.buymeacoffee.com/booleanhunter" target="_blank">
   <img src="https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;">
 </a>
+ ## To do
+
+- Mimic a moving cop and a moving civilian that continuously send location updates to each other in real time, and update the marker icons on the map.
+- Set the status field to closed once the cop has helped the civilian out. Then, you can assign a different colour to visualize closed issues on a heat-map. That way you’ll have an understanding of how efficient cops are in a given area.
+- Build a rating system with which a civilian and a cop can rate each other. This way, neither civilian nor cop will misuse the system, and cops can get performance reports.
+- Have a cool looking user interface, like Material UI.
+- Lastly, have a sign-up and login mechanism!

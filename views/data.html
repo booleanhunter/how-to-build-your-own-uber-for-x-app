@@ -31,17 +31,18 @@
 
             map = new mapboxgl.Map({
                 container: "map",
-                style:"mapbox://styles/mapbox/streets-v11",
+                style: "mapbox://styles/mapbox/streets-v11",
                 center: [77.64115449999997, 12.9718915],
                 zoom: 10
             });
-
+            map.addControl(new mapboxgl.FullscreenControl());
             map.on("load", () => {
                 // Add a new source from our GeoJSON data and set the 'cluster' option to true.
                 map.addSource("help-requests", {
                     type: "geojson",
                     data: response.data
                 });
+
                 // we can specify different color and styling formats by adding different layers
                 map.addLayer(
                     {
@@ -63,6 +64,23 @@
                         }
                     }
                 );
+
+            });
+            // Center the map on the coordinates of any clicked circle from the 'circle' layer.
+            map.on('click', 'help-requests', (e) => {
+                map.flyTo({
+                    center: e.features[0].geometry.coordinates
+                });
+            });
+
+            // Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+            map.on('mouseenter', 'help-requests', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change it back to a pointer when it leaves.
+            map.on('mouseleave', 'help-requests', () => {
+                map.getCanvas().style.cursor = '';
             });
         })
         .catch(function (error) {
